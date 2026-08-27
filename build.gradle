@@ -2,10 +2,11 @@ buildscript {
     repositories {
         mavenCentral()
         maven { url = "https://oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url = "https://plugins.gradle.org/m2/" }
         jcenter()
     }
 	dependencies {
-        classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.3'
+        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.4'
         classpath 'org.ajoberstar:grgit:1.7.0'
     }
     configurations.all {
@@ -94,6 +95,7 @@ subprojects {
     }
 
     repositories {
+        flatDir {dirs "${rootProject.projectDir}/core/lib"}
         maven {url "https://mvnrepository.com/artifact/"}
         mavenCentral()
         maven {url "http://repo.dmulloy2.net/content/groups/public/"}
@@ -106,6 +108,8 @@ subprojects {
         maven {url "https://repo.maven.apache.org/maven2"}
         maven {url "http://ci.frostcast.net/plugin/repository/everything"}
         maven {url "http://repo.spongepowered.org/maven"}
+        maven {url "https://repo.phoenix616.dev/"}
+        maven {url "https://repo.aikar.co/content/groups/aikar/"}
         maven {url "http://dl.bintray.com/tastybento/maven-repo"}
         maven {url "https://repo.inventivetalent.org/content/groups/public/"}
         maven {url "https://store.ttyh.ru/libraries/"}
