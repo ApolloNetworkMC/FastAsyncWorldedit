@@ -696,12 +696,19 @@ public abstract class FawePlayer<T> extends Metadatable {
 //        if (cfi != null && cfi.hasGenerator() && cfi.getGenerator().hasPacketViewer()) {
 //            return cfi.getGenerator();
 //        }
-        return WorldEdit.getInstance().getPlatformManager().getWorldForEditing(getWorld());
+        World world = getWorld();
+        if (world == null) {
+            return null;
+        }
+        return WorldEdit.getInstance().getPlatformManager().getWorldForEditing(world);
     }
 
     public PlayerProxy createProxy() {
         Player player = getPlayer();
         World world = getWorldForEditing();
+        if (world == null) {
+            world = player.getWorld();
+        }
 
         PlatformManager platformManager = WorldEdit.getInstance().getPlatformManager();
 
